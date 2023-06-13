@@ -1,0 +1,128 @@
+<p>
+  <mat-toolbar color="primary">
+    <span>Chafit</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+</p>
+
+<p>
+  Bienvenidos a nuestra plataforma con la que podrá bajar de peso fácilmente
+</p>
+
+<mat-tab-group>
+  <mat-tab label="Rutinas">
+    <mat-card>
+      <h2>Acciones</h2>
+      <mat-card-content>
+        <button
+          mat-raised-button
+          class="separated-button"
+          (click)="createRoutine()"
+        >
+          Crear Rutina
+        </button>
+      </mat-card-content>
+    </mat-card>
+    <table mat-table [dataSource]="routinesByUser" class="mat-elevation-z8">
+      <ng-container matColumnDef="routine_id">
+        <th mat-header-cell *matHeaderCellDef>ID Rutina</th>
+        <td mat-cell *matCellDef="let element">{{ element.routine_id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="routine_name">
+        <th mat-header-cell *matHeaderCellDef>Nombre Rutina</th>
+        <td mat-cell *matCellDef="let element">{{ element.routine_name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="accion">
+        <th mat-header-cell *matHeaderCellDef>Acción</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button (click)="registrarEntrenamiento()">
+            Registar Entrenamiento
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsExerciseByUser"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsExerciseByUser"></tr>
+    </table>
+  </mat-tab>
+  <mat-tab label="Ejercicios">
+    <h1>Ejercicios Disponibles</h1>
+    <p>Estos son los ejercicios disponibles en la plataforma</p>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="exercise_id">
+        <th mat-header-cell *matHeaderCellDef>ID Ejercicio</th>
+        <td mat-cell *matCellDef="let element">{{ element.exercise_id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nombre del ejercicio</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="muscle_id">
+        <th mat-header-cell *matHeaderCellDef>ID Músculo</th>
+        <td mat-cell *matCellDef="let element">{{ element.muscle_id }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-tab>
+  <mat-tab label="Historial">
+    <mat-card fxFlex="100">
+      <form
+        [formGroup]="formGroup"
+        (ngSubmit)="showHistory()"
+        fxLayout="column"
+        fxLayoutAlign="strech"
+      >
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="ID Ejercicio"
+            formControlName="id_exercise"
+          />
+        </mat-form-field>
+
+        <button mat-raised-button type="submit">Mostrar historial</button>
+      </form>
+    </mat-card>
+
+    <table mat-table [dataSource]="statsByExercise" class="mat-elevation-z8">
+      <ng-container matColumnDef="exerName">
+        <th mat-header-cell *matHeaderCellDef>Nombre Ejercicio</th>
+        <td mat-cell *matCellDef="let element">{{ element.exerName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="gymRep">
+        <th mat-header-cell *matHeaderCellDef>Repeticiones</th>
+        <td mat-cell *matCellDef="let element">{{ element.gymRep }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="gymSet">
+        <th mat-header-cell *matHeaderCellDef>Series</th>
+        <td mat-cell *matCellDef="let element">{{ element.gymSet }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef>Peso (kg)</th>
+        <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="routine_name">
+        <th mat-header-cell *matHeaderCellDef>Nombre de la rutina</th>
+        <td mat-cell *matCellDef="let element">{{ element.routine_name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dateWorkout">
+        <th mat-header-cell *matHeaderCellDef>Fecha del entrenamiento</th>
+        <td mat-cell *matCellDef="let element">{{ element.dateWorkout }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="statsByExerciseIdUser"></tr>
+      <tr mat-row *matRowDef="let row; columns: statsByExerciseIdUser"></tr>
+    </table>
+  </mat-tab>
+</mat-tab-group>

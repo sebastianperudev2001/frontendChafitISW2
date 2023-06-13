@@ -1,0 +1,35 @@
+<h1>Registro de rutina</h1>
+
+<mat-form-field>
+  <mat-label>Ejercicios</mat-label>
+  <mat-select [formControl]="ejercicios" multiple>
+    <mat-select-trigger>
+      {{ejercicios.value?.[0] || ''}}
+      <span
+        *ngIf="(ejercicios.value?.length || 0) > 1"
+        class="example-additional-selection"
+      >
+        (+{{ (ejercicios.value?.length || 0) - 1 }}
+        {{ ejercicios.value?.length === 2 ? "other" : "others" }})
+      </span>
+    </mat-select-trigger>
+    <mat-option
+      *ngFor="let ejercicio of exercisesList"
+      [value]="ejercicio.exercise_id"
+      >{{ ejercicio.name }}</mat-option
+    >
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <mat-label>Nombre de la rutina</mat-label>
+  <input
+    matInput
+    placeholder="Push, Pull, Leg, Upper, etc"
+    value="routine_name"
+    [formControl]="routine_name"
+  />
+</mat-form-field>
+
+<button mat-raised-button (click)="guardar()">Guardar</button>
+<button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
