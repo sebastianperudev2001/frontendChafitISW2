@@ -16,3 +16,4 @@ class RoutineExercise {
         this.dateWorkout = dateWorkout;
     }
 }
+ 

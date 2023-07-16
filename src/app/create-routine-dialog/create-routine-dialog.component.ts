@@ -55,9 +55,8 @@ export class CreateRoutineDialogComponent {
     const rb = new RoutineBuilder();
     rb.setUserId(1);
     rb.setName(this.routine_name.value);
-    rb.
 
-      this.id_exercises = this.ejercicios.value;
+    this.id_exercises = this.ejercicios.value;
 
     this.routineService.createRoutine(data).subscribe((result) => {
       this.id_routina = result

@@ -12,6 +12,7 @@ import { Stat } from '../classes/StatClass';
   styleUrls: ['./registrar-entrenamiento-dialog.component.css']
 })
 export class RegistrarEntrenamientoDialogComponent implements OnInit {
+  currentDate: Date = new Date();
 
   constructor(
     private exerciseService: ExerciseServiceService,
@@ -48,11 +49,12 @@ export class RegistrarEntrenamientoDialogComponent implements OnInit {
         reps: element.reps,
         sets: element.sets,
         id: element.routineExercise_id,
+        dateWorkout: this.currentDate,
       };
     });
 
     data.forEach(element => {
-      const statInstance = new Stat(element.sets, element.reps, element.weight, element.id);
+      const statInstance = new Stat(element.sets, element.reps, element.weight, element.id, element.dateWorkout);
       this.statService.createStat(statInstance).subscribe((result) => {
         console.log(result);
       })
