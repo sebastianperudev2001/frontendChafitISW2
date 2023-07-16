@@ -1,8 +1,10 @@
+
 import { ObserversModule } from '@angular/cdk/observers';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL } from 'src/environments/environment';
+import { Stat } from '../classes/StatClass';
 
 @Injectable({
   providedIn: 'root'
@@ -18,4 +20,14 @@ export class StatServicesService {
 
   }
 
+
+  createStat(stat: Stat): Observable<any> {
+    console.log(stat);
+    return this.http.post(`${API_URL}Stat`, stat);
+
+  }
+
+
+
 }
+

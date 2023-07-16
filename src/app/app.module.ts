@@ -21,6 +21,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateRoutineDialogComponent } from './create-routine-dialog/create-routine-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
 import { RegistrarEntrenamientoDialogComponent } from './registrar-entrenamiento-dialog/registrar-entrenamiento-dialog.component';
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import { ChatgptComponent } from './chatgpt/chatgpt.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { RegistrarEntrenamientoDialogComponent } from './registrar-entrenamiento
     MainMenuComponent,
     CreateRoutineDialogComponent,
     RegistrarEntrenamientoDialogComponent,
+    RegistrationFormComponent,
+    ChatgptComponent,
   ],
   imports: [
     BrowserModule,

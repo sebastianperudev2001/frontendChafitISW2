@@ -12,8 +12,12 @@ export class ExerciseServiceService {
   constructor(private http: HttpClient) { }
 
   getAllExercises(): Observable<any> {
-    console.log("I am service")
     return this.http.get(`${API_URL}Exercise`);
+  }
+
+
+  getExercisesByRoutine(routine_id: Number): Observable<any> {
+    return this.http.get(`${API_URL}RoutineExercise/exercises/${routine_id}`);
   }
 
 }

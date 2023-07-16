@@ -1,17 +1,17 @@
 /*
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainMenuComponent } from './main-menu.component';
+import { ChatgptComponent } from './chatgpt.component';
 
-describe('MainMenuComponent', () => {
-  let component: MainMenuComponent;
-  let fixture: ComponentFixture<MainMenuComponent>;
+describe('ChatgptComponent', () => {
+  let component: ChatgptComponent;
+  let fixture: ComponentFixture<ChatgptComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MainMenuComponent]
+      declarations: [ChatgptComponent]
     });
-    fixture = TestBed.createComponent(MainMenuComponent);
+    fixture = TestBed.createComponent(ChatgptComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

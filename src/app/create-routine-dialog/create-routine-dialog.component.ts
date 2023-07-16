@@ -4,6 +4,7 @@ import { ExerciseServiceService } from '../services/exercise-service.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MainMenuComponent } from '../main-menu/main-menu.component';
 import { RoutinesServicesService } from '../services/routines-services.service';
+import { RoutineBuilder } from '../classes/RoutineBuilder';
 
 @Component({
   selector: 'app-create-routine-dialog',
@@ -11,6 +12,7 @@ import { RoutinesServicesService } from '../services/routines-services.service';
   styleUrls: ['./create-routine-dialog.component.css']
 })
 export class CreateRoutineDialogComponent {
+
   ejercicios = new FormControl('');
   routine_name = new FormControl('');
 
@@ -35,8 +37,6 @@ export class CreateRoutineDialogComponent {
       console.log(data);
       this.exercisesList = data;
     })
-
-
   }
 
   cancelar() {
@@ -52,7 +52,12 @@ export class CreateRoutineDialogComponent {
       "routine_name": this.routine_name.value,
     }
 
-    this.id_exercises = this.ejercicios.value;
+    const rb = new RoutineBuilder();
+    rb.setUserId(1);
+    rb.setName(this.routine_name.value);
+    rb.
+
+      this.id_exercises = this.ejercicios.value;
 
     this.routineService.createRoutine(data).subscribe((result) => {
       this.id_routina = result

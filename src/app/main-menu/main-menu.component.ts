@@ -75,30 +75,34 @@ export class MainMenuComponent implements OnInit {
 
   public rellenarTabla() {
     this.exerciseService.getAllExercises().subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.dataSource = data;
     })
 
     this.routineService.getRoutineByUser(1).subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.routinesByUser = data;
     })
   }
 
   public createRoutine() {
     const dialogRef = this.dialog.open(CreateRoutineDialogComponent, {
-      height: '400px',
-      width: '600px',
+      height: '600px',
+      width: '1000px',
     }).afterClosed()
       .subscribe((result) => {
         this.ngOnInit()
       });;
 
   }
-  public registrarEntrenamiento() {
+  public registrarEntrenamiento(id_rutina: number) {
     const dialogRef = this.dialog.open(RegistrarEntrenamientoDialogComponent,
       {
-        height: '400px',
+        data:
+        {
+          rutina: id_rutina
+        },
+        height: '1000px',
         width: '1000px',
       }).afterClosed()
       .subscribe((result) => {
